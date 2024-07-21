@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Listagem de Produtos</title>
+    <link rel="stylesheet" tipe="txt/css" href="style.css">
+    <style>
+    </style>
+</head>
+<body>
+    <form id="productForm">
+        <h1>Cadastro de Produtos</h1>   
+        <label for="productName">Nome do Produto:</label><br>
+        <input type="text" id="productName" required><br><br>
+
+        <label for="productDescription">Descrição do Produto:</label><br>
+        <input type="text" id="productDescription" required><br><br>
+
+        <label for="productValue">Valor do Produto:</label><br>
+        <input type="number" id="productValue" step="0.01" required><br><br>
+
+        <label for="productAvailability">Disponível para Venda:</label><br>
+        <select id="productAvailability" required>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+        </select><br><br>
+
+        <div class="buttons">
+            <button type="submit">Cadastrar Produto</button>
+            <button type="button" id="listProducts">Listar Produtos</button>
+        </div>
+    </form>
+
+    <h1 class="hidden" id="listagemHeader">Listagem de Produtos</h1>
+    <button class="hidden" id="addNewProduct">Cadastrar Novo Produto</button>
+    <table id="productTable" class="hidden">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
