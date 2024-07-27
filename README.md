@@ -5,7 +5,7 @@ Projeto desenvolvido para apresentar habilidades em html, css, javascript e arma
 ## Estudo de Caso: Cadastro e Listagem de Produtos na LocalStorage
 
 ### Objetivo:
-Implementar um sistema de cadastro e listagem de produtos que permita ao usuário inserir novos produtos e visualizar uma lista ordenada dos produtos cadastrados, e possibilidade excluí-los.
+Implementar um sistema de cadastro e listagem de produtos numa tabela, que permita ao usuário inserir novos produtos e visualizar uma lista ordenada dos produtos cadastrados, com possibilidade excluí-los.
 
 ### Requisitos:
 
@@ -14,15 +14,20 @@ a) Cadastro de Produto:
 - Ao cadastrar um produto, redirecionar automaticamente para a listagem.
 
 b) Listagem de Produtos:
-- Colunas: nome e valor.
+- Colunas:
+* nome
+* valor
 - Ordenação dos produtos por valor, do menor para o maior.
-- Botão na listagem para cadastrar um novo produto.
-- Botão de exclusão do produto.
+- Botão na tela de listagem para cadastrar um novo produto.
+- Botão na tela de listagem para excluir produto.
 
 ### Descrição do Caso de Uso:
 
 a) Cadastrar Produto:
-- O usuário preenche um formulário com o nome e valor do produto e envia o formulário.
+- O usuário preenche um formulário:
+* nome
+* valor
+* descrição
 - O sistema armazena o produto no localStorage.
 
 b) Listar Produtos:
@@ -32,6 +37,8 @@ b) Listar Produtos:
 
 c) Excluir Produto:
 - O usuário clica no botão "Excluir" ao lado de um produto na listagem.
-- O sistema remove o produto do LocalStorage e atualiza a listagem.
+- O sistema pergunta sobre a certeza de exclusão ao usuário:
+* Se o usuário optar por cancelar o sistema não excluirá o produto.
+* Se o usuá optar por ok, O sistema remove o produto do LocalStorage e atualiza a listagem.
 
 Link [aqui](https://michelmathos.github.io/cadastro-localstorage/)
