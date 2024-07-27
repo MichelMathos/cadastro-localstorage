@@ -16,18 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadProducts = () => {
         const products = JSON.parse(localStorage.getItem('products')) || [];
         tbody.innerHTML = '';
-        products.sort((a, b) => parseFloat(a.value) - parseFloat(b.value)).forEach(product => {
+        products.sort((a, b) => parseFloat(a.value) - parseFloat(b.value)).forEach((product, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${product.name}</td>
                 <td>${product.value}</td>
+                <td><button class="delete-btn" data-index="${index}">Excluir</button></td>
             `;
             if (product.availability === 'Não') {
                 row.classList.add('not-available');
             }
             row.addEventListener('mouseover', (e) => {
                 popup.style.display = 'block';
-                popup.textContent = "Descrição: " + product.description + " Disponível: " + product.availability;
+                popup.textContent = `Descrição: ${product.description} Disponível: ${product.availability}`;
                 popup.style.top = `${e.clientY + 10}px`;
                 popup.style.left = `${e.clientX + 10}px`;
             });
@@ -47,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         productTable.classList.remove('hidden');
         addNewProduct.classList.remove('hidden');
         productForm.classList.add('hidden');
+        loadProducts();
+    };
+
+    const deleteProduct = (index) => {
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        products.splice(index, 1);
+        localStorage.setItem('products', JSON.stringify(products));
         loadProducts();
     };
 
@@ -77,6 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     listProducts.addEventListener('click', showListagem);
 
-    loadProducts();
+    tbody.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-btn')) {
+            const index = e.target.getAttribute('data-index');
+            const productName = e.target.closest('tr').children[0].textContent;
+            const confirmDeletion = confirm(`Tem certeza que deseja excluir o produto ${productName}?`);
+            if (confirmDeletion) {
+                deleteProduct(index);
+            }
+        }
+    });
+
+    // Carrega a listagem de produtos ao carregar a página
     showListagem();
 });
